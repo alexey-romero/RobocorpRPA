@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1 (Python 3.7.5 on win32)" generated="20210907 10:53:37.232" rpa="true" schemaversion="2">
+<suite id="s1" name="Tasks" source="c:\Users\e1345288\Documents\GitHub\RobocorpRPA\certification-one-robot\tasks.robot">
+<test id="s1-t1" name="Insert the sales data for the week and export it as a PDF">
+<kw name="Open the Intranet website">
+<kw name="Open Chrome Browser" library="RPA.Browser.Selenium">
+<arg>http://robotsparebinindustries.com</arg>
+<doc>Open Chrome browser. See ``Open Available Browser`` for
+descriptions of arguments.</doc>
+<msg timestamp="20210907 10:53:39.865" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20210907 10:53:39.891" level="INFO">Created download root directory: C:\Users\e1345288\AppData\Local\robocorp\webdrivers</msg>
+<msg timestamp="20210907 10:53:39.892" level="INFO">Created symlink directory: C:\Users\e1345288\AppData\Local\robocorp\webdrivers</msg>
+<msg timestamp="20210907 10:53:39.893" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20210907 10:53:41.160" level="INFO">Created Chrome browser with arguments: --disable-dev-shm-usage --disable-web-security --allow-running-insecure-content --no-sandbox</msg>
+<msg timestamp="20210907 10:53:41.161" level="INFO" html="true">&lt;p&gt;Attempted combinations:&lt;/p&gt;&lt;div class="doc"&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Browser&lt;/th&gt;&lt;th&gt;Download&lt;/th&gt;&lt;th&gt;Error&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;False&lt;/td&gt;&lt;td&gt;Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;True&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</msg>
+<msg timestamp="20210907 10:53:41.161" level="INFO">Opening url 'http://robotsparebinindustries.com'</msg>
+<status status="PASS" starttime="20210907 10:53:39.863" endtime="20210907 10:53:43.215"/>
+</kw>
+<status status="PASS" starttime="20210907 10:53:39.860" endtime="20210907 10:53:43.217"/>
+</kw>
+<kw name="Log in">
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>username</arg>
+<arg>maria</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210907 10:53:43.225" level="INFO">Typing text 'maria' into text field 'username'.</msg>
+<status status="PASS" starttime="20210907 10:53:43.220" endtime="20210907 10:53:43.305"/>
+</kw>
+<kw name="Input Password" library="RPA.Browser.Selenium">
+<arg>password</arg>
+<arg>thoushallnotpass</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20210907 10:53:43.307" level="INFO">Typing password into text field 'password'.</msg>
+<msg timestamp="20210907 10:53:43.345" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20210907 10:53:43.393" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20210907 10:53:43.305" endtime="20210907 10:53:43.393"/>
+</kw>
+<kw name="Submit Form" library="RPA.Browser.Selenium">
+<doc>Submits a form identified by ``locator``.</doc>
+<msg timestamp="20210907 10:53:43.395" level="INFO">Submitting form 'None'.</msg>
+<status status="PASS" starttime="20210907 10:53:43.394" endtime="20210907 10:53:43.434"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="RPA.Browser.Selenium">
+<arg>sales-form</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20210907 10:53:43.436" endtime="20210907 10:53:45.787"/>
+</kw>
+<status status="PASS" starttime="20210907 10:53:43.217" endtime="20210907 10:53:45.788"/>
+</kw>
+<kw name="Download excel file">
+<kw name="Download" library="RPA.HTTP">
+<arg>https://robotsparebinindustries.com/SalesData.xlsx</arg>
+<arg>overwrite=True</arg>
+<doc>An alias for the ``HTTP Get`` keyword.</doc>
+<msg timestamp="20210907 10:53:48.408" level="INFO">Creating a new HTTP session</msg>
+<msg timestamp="20210907 10:53:48.408" level="INFO">Creating Session using : alias=rpasession_alias.httpsrobotsparebinindustries.com, url=https://robotsparebinindustries.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<msg timestamp="20210907 10:53:48.813" level="INFO">GET Request : url=https://robotsparebinindustries.com/SalesData.xlsx 
+ path_url=/SalesData.xlsx 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20210907 10:53:48.912" level="INFO">GET Response : url=https://robotsparebinindustries.com/SalesData.xlsx 
+ status=200, reason=OK 
+ body=PKTC�P��U��;_rels/.rels���j�0��}
+�{���1F�^Ơ�2��l%1�-#�[��3��JlGI������aR���Sl�����h���7�������v�{��H�����J'�F"� ���%���#e������u}����S\���6Z�����8#,1��6��\��{�F;�ǲΟ���5\��^���[| {�΂ѡ��dR�ft�F�ķ�&lt;���B4~�����PKTC�P!��docProps/core.xmlm�Mk�@D��
+���n Y��SI`�C��a��;~&amp;��K�E�z�y��Z~Sd�]�ںQ%9��qs�&gt;ޟ�'5�C�&gt;�k��2�wz����q!��΄�姏VK�q���g�S�&lt;�%ѓ��*FuWNx(�W\w��@+Yr���-��B�򿃽9ȍ�A�����s�Q����~�2�E;$C�PKTC�P���/��docProps/app.xml���
+�0�{�"�ަz)������lڀ��Z��|��0���br��&lt;T����å���R����5R����L�\�C�T�+�9U���X�~���Z�a$�􀬎u}R�3�S�(�b��!�����+dO��PKTC�P����rxl/workbook.xml�OAn� ��h�	�J#�2�Uͽm�Ԭ�a-�u��G�z쉙Yfv��_���1&amp;GA��F�Вq�������`�V�D��Itf�{Hu�`sk�Sk�봡C�u�΅ƞS׹�~y�?
+���˪dݘ�����4F�&amp;Y��[��.�j��&gt;NI�K^)��\04I(�,x[�4�3ٖ���ww�]os+Q	������˂�(�謁����X���lg�b�K5��PKTC�P�[��xl/_rels/workbook.xml.rels���j�0��y
+��ZvZJ)�s	�\�����LlIh�?y�nSHb��Č�3��V��qP�����@U��0����3�{�{�u�X��`Y���)�	d�3�g��y-1a��6�Ѳ���d��v��e���eԓL�m�mS���';�m�p�ǈ��Th�6c��Y.Cls�l`b�
+�:�rV&gt;xIqԷ���g��s�Q���-��9�bޓG�3���}-YN0z����PKTC�PYȻ���Uxl/theme/theme1.xml�\�n�8}�Wz]��lɗ�N'kt��5�,���)[EiI:M��;��M�v��{Hr���P:y��6a�2N���޹�Ey��c���_-�N��oޓ#��	�����[��#Ǒ!d�.�(��(	Q�g-�7h%a��uGNBbn��S�Q��,w	�*oDPF�Tn�L�'	��_�&gt;.;�'����!���y�������)�a3�5/�9~�T����y���tp'c�����uq�P�����!����_L��Y�m�r�����~�h��O��y0m�5���'��?��~��������Z��Ə��OG~o@[����f��D)��_,��4�������5��zrK�e4"!�&gt;RvCU�3�Q��Q� ��=�I�~j�N�&lt;�X�A[E1c���siz+S��i�R55��B]��ȖH�?��^nIj&lt;�a#��7��R	���m&lt;F�U�˥h�&gt;��&lt;{�t	U3&amp;��MEC��S���S���'j�~m��ڜ�5aYXDo	�h���dH]k�����S乍9ڒ5��n��L������/cd�cd���o��o�̓A`[!�fv��$��$��a��C���7�i?�&lt;�?d���LHuF�6�e������������^'�/셳?�4�h���I(��-}y��׳�f�;}��m�����}�c:}^����#�S�TF���@�X���گ��}�򑖚�o'�(���y��n�g� ���݆������c����æv�K�i&lt;ÙT�X�����3xBܱ&lt;Gf�ʅ��򃇧���i���p��H�;�n:��cӣ��xV��n)45�,���?'R-� ������G�RGZH��M�}_���QJm��������֖*Q
+�R��4eF1�ƈ�&gt;%3I	���[�.�f��Ւ��T��O���̂����FKuBĹi�#�|6�U���������|���EGDN��N�&gt;���6�[x��f��a�=��0�g�;�N1/�.�,N�%��'�zW��v@��['�/�+Qx���S#*�*i�s��"��#5	�fU�t%��o%�k��.�9`@��㮬r�K�$����:H��{������f}�Ӈ�`+�т���NgC�?Z���L�)u%=GI]���%�2sk��`��W�������w�d�"1
+��#ȑ&gt;�j��#ȑ&gt;�k����HG��#r9�Ǒ���9���Ȩ��9���ȸ��9���Ȥ��9����4+�F�W��4���ma���a?/W�A���&lt;c�����`uA���MAe�ؿ�E9���~0���E@Q�j�&lt;�B���B ���]����H�#G0@��=r���#G0@��=r9�z�����������7w�T+*,'�ȸ6��i����_��F��|��#��#G0���@&gt;r���#G0���@���E�������_���PKTC�P��ӹ1xl/worksheets/sheet1.xml��_s����)4z�Sb�	ndgb3N:M��t�&gt;k-��D���o_����=#tl�&lt;qt�ß����v��k��z;W7�|V��u�������n���W˷����R��������K�&gt;,ǧ�r�:�ԇr����n�v����l�����N�r�.t����ܮ��ZǗ�p���Ŵu&lt;4�j=ta��ڭ���n������Ϛrs;�A}x�z��[�W��q���w���7����w��/��OM���ڗ�aϺܬN۶��Po�έ�[\@��C?6�gt��T���v�nu�.m�^��\V�/mז�I糧ӱ�w�}�Y}j�]~)_�m�:2�׵�����To���ٮ���V��Ƌ��Fe*וּ�ݖÑ�r�Ωs+���|�������*�&lt;�����|y�9�l.'S}�=��^Nv}�mlϳ�O.%g��6c���X���eS�͆;e64�]�"w��5?t�n�{���~�|�K��׾ճ��W&lt;�B���+~T�1&gt;�~���;CW��J�u�]����p=�\��2Wz8��\�r��bz���s4Ͼ8w8pD1�h��|�f��"c�h8����F)���)Ȣ)�(`�Ę2P�L�"g�̤�2�},������G����$H�e�e�s���-|���rW6�*�q�B�s�	{`�i%(�f��
+��D��T0�Řʰ&lt;$	O�lZ�.�v�@�ʸ�,��ŸrX��'��*��ZL��B�����O9��� �A�O�9I�_������6"l�*V/_A��d�`i�斿~=E"쬘x;�̩(s
+*�yfHJy/-e�d�;�T�]_(���C���P�+L���I��pS*�E
+AB��4&lt;C�ɗ�O��N2��B����C!Ph�%�����b�!����@��B䡢�C!Xĉ��8��B��4�'�����(Q�q"h NR?	��[�SHo�B��@D!f����0�|��..�9_"�	�GTHT�(��&lt;4�'S��:��d�	�d�D��DE��B� HAi���Kr�r�wx�B|���D#{(�����G�䎿�tr�p�D��DGщF�0&lt;N$����K,���W��NtNt���0���@&lt;8Q�Y&gt;\�)R!+5���DG��F�0&lt;L$폅h�[ߡ��:�!:�Qt��&lt;�I��D{t�Qeƽy�p@':D':�N4���04&amp;�Ї2)�_!��4��቎���a!O��&gt;��y��Љщ����a!M�IưR�P*|�4�NtNt�hy"h O��E��s׆�NtNt�ha"h L&lt;��3�8��
+�6�!6�(6!䎔ǉ��qBS�piʩ� ^�q`
+�	E�	!w�&lt;K$���C�#��/�88��P����|/ix��=��ܔ�@��6��M��0G�4��i�&lt;M�&amp;0OC�F�	gjBlBQlB�)�I�ㄼ	�D�,�'p�=	lB!6�(6!��D�@�X&gt;����%R�M(�&amp;�&amp;�ܑA��o�D���T]:!�
+�	E�	!xd�&amp;��ć��p)�ˮV�	������&lt;2A�⍜��%�| �
+�	E�	!xd�&amp;���!g&lt;rW�u�Btb��� y8(�������0��\�0@'&amp;D'&amp;�N�_Ep/ix�=Ҏ��X��
+'�Ą��D��A�p&lt;N$�3e�9���'�%k'&amp;'&amp;
+N���Y"ix�NT�����\��1'&amp;��$n!�����XL�!�&lt;q��p�JBtb��� y�&amp;���C�~��8{m"�����(819ĉ��8I��q�A��k뀀ML�ML���D�@����,�5&amp;�D�5�&amp;&amp;�&amp;&amp;�MrGy"h O&lt;����&lt;��������(61�9����0����0�`�#��Ą��F��E�P	,Q�D�H̓�&gt;V�	�׀8�!8�Qpb����ǉ(�ybٴM����$Ґ�&gt;�!&gt;�Q|bGP���=�z�]���}����to1YV|X=��X5���8ۖ��g�M��3vs�h�ð��s�v�E��j]6��;����}c1��ϲ=f��9���_O���|yS������a���yv|Z����9�G�B�l���};,����mVU;�����z�����^��o�e��h����ͻe�^���z�;|�0����S�~�s�}-��i5��&lt;���^&gt;���f&lt;6Ȕ~�}x�����ŗ��Z���m���PKTC�PS��Կ�	xl/sharedStrings.xmluVMoA��W .=5K���*B�GI ���G�ٵ�:3%��F�T��{�����^�v���$�����A�Ǿ
+F|}�Y���_�.�)�^��W�����/��=��OW�&amp;��עHUÎ�eرW�&amp;DGYƺH��dRÜ�-&gt;�G���a��0��5�=9y4,Nֿ�%���L�S����Xs&gt;��h/��x�����:&gt;C���s�km�P	����B��o�Mp)a��a�ms��ֳ����{-�������ЎWJ$����)Z�}�&gt;c�K��&gt;Ϲy���m�4vCt|ʈS�:@�Y�E��9ad*���h��l��t��+�uG���h��I��R�xn\�%o!�1f��ckZg����sG��ûY�T����b����иs��DTA�8��܆�Z��Zo��S�"0��C�i�X��;PzS,��0����g���ܪ��]Pl�t)a&amp;O!I(㲄Tck�q����m]�ײِ?"8v��[F�ccPe��: ӡ
+0y�Kb��u+B�-Nv]�����X�Z�V�vP/%��M#�_ہ�k��Bߡ$	���B���yu�/%�Â׭
+`eu�����_�K$�S��"�t��K�L	��1�Orɨ�O\KW�OW��3�3���5�[���8ʪ�;�5����Ó���Т`.9�ѫ��yԤgZ�P�96��PKTC�Pä���xl/styles.xml�X[o�0~ﯰ����Pu������Vګ� �#�����J��jB�`��w�wr�]��*����2�,��a�3���q�io�+��JV�H�X������hEr\^�0�I�ȱTS���ǥv�)9��8c0��:_�_3��nE��~�T�X�9�I�F��&gt;��C?�E��~�&lt;c�p]mq��XL*�pgZ�pN�͝�jT뻇0z�;��Df�dMCy''Ӈp�osӕ�(�Vj
+� �,%l�&amp;�?n
+Un�YM�ؽ`�
+�qG��%�Y��H�t\G�,k1^K��C�v�N�r�Al�y��1Q�M�Ò�X���!f��&gt;%�T�"KW�.y��&lt;W�8�)g���G��E��,��fEڮ0���D�X+�&amp;�!����B�O�n����Z�We򪊠���ލàĆ6ةlON���CD(}�h���-�J��g�qQ���:_�0�v+]p�_����}5!���R����O�%��9�8*	ܘ�C��u��eV����t�L�3�r\����ӻi�����#l��{4w��{�v �-p�H*�l�/��a2�2�2���&lt;�t۫CŻ���&amp;;��]�B���B�\L{]�K���b�|��LP}���wN�[)�o�x�s�TI�w�Ψ̘����Ya�U{r6Z����Fq����C�/Ǽ��ti�L�A��1�v��ث_s��q�_�F��9��!-?�9��̙zxԧ���Ӑ���i"�?�۫=j~Ծ���PKTC�P�܊��[Content_Types].xml���n�0E���(�*1tQU�Ei�-R��x��l��w
+��@�I��{g�N2�6��j0�+9��� �@f�qY���G�O'��N��p���tN�b���� 1�+#��GSM�5-�&lt;�$Sҁt���d4��n*�7��"Go�u�jS�+�Q�i�$��lXKvR]�WY�d�Ɩ\��n����ā��J��a����R� ��a��y���0�:�Ih����gÜPu�Yd�{���g�T��������A7�mnr��e�p�Jۻ���7�pќ�I�d�Fi���@�\���z:�(�q8�^G����S�Sc�.�n*�Uf�Tj}�u`ȩ�\��%5������w/���:ܮ��Њ�qv�A��ux�+s���Z�ކw������?���/PK&gt;TC�P��U��;_rels/.relsPK&gt;TC�P!��docProps/core.xmlPK&gt;TC�P���/��docProps/app.xmlPK&gt;TC�P����r�xl/workbook.xmlPK&gt;TC�P�[��xl/_rels/workbook.xml.relsPK&gt;TC�PYȻ���U2xl/theme/theme1.xmlPK&gt;TC�P��ӹ1axl/worksheets/sheet1.xmlPK&gt;TC�PS��Կ�	dxl/sharedStrings.xmlPK&gt;TC�Pä���ixl/styles.xmlPK&gt;TC�P�܊���[Content_Types].xmlPK
+
+�w 
+ 
