@@ -8,20 +8,28 @@ Documentation   Orders robots from RobotSpareBin Industries Inc.
 Library    RPA.Browser.Selenium
 Library    RPA.HTTP
 Library    RPA.PDF
-Library    RPA.Robocloud.Secrets
+Library    RPA.Robocorp.Vault
 Library    RPA.Tables
 Library    RPA.Archive
+Library    Dialogs
 
-*** Variables ***
-${SECRET} =    Get Secret    credentials
+#*** Variables ***
+#${secret} =    Get Secret    csv-file-download
+
+#*** Keywords ***
+#Open vault
+#    ${secret} =    Get Secret    csv-file-download    
 
 *** Keywords ***
-Open browser  
-    Open Chrome Browser    https://robotsparebinindustries.com/#/robot-order    maximized=True
+Open browser 
+    ${url}=    Get Value From User    Input website url    
+    Open Chrome Browser    ${url}    maximized=True
 
 *** Keywords ***
 Download orders file
-    Download    https://robotsparebinindustries.com/orders.csv  overwrite=True
+    #[Arguments]    ${url}
+    ${secret} =    Get Secret    csv-file-download
+    Download    ${secret}[url]  overwrite=True
 
 *** Keywords ***
 Close Consitutional Rights Pop Up
@@ -49,22 +57,23 @@ Receipt
     [Arguments]    ${order}
     Wait Until Element Is Visible    id:receipt
     ${order_receipt}=    Get Element Attribute    id:receipt    outerHTML
-    Html To Pdf    ${order_receipt}    ${CURDIR}${/}output${/}receipts${/}order_receipt.pdf
+    Html To Pdf    ${order_receipt}    ${CURDIR}${/}output${/}receipts${/}${order}${/}order_receipt.pdf
 
 *** Keywords ***
 Screenshot Robot preview
     [Arguments]     ${order}
     Wait Until Element Is Visible    id:robot-preview-image
-    Screenshot    id:robot-preview-image    ${CURDIR}${/}output${/}previews${/}Robot_Preview.png
+    Screenshot    id:robot-preview-image    ${CURDIR}${/}output${/}previews${/}${order}${/}Robot_Preview.png
 
 *** Keywords ***
 Embed Robot preview to PDF
-    [Arguments]    
-    Open Pdf    ${CURDIR}${/}output${/}receipts${/}order_receipt.pdf
-    ${file}=    Create List    
-    ...    ${CURDIR}${/}output${/}previews${/}Robot_Preview.png
-    Add Files To pdf    ${file}        ${CURDIR}${/}output${/}receipts${/}order_receipt.pdf
-    Close Pdf    ${CURDIR}${/}output${/}receipts${/}order_receipt.pdf
+    [Arguments]    ${order}
+    Open Pdf    ${CURDIR}${/}output${/}receipts${/}${order}${/}order_receipt.pdf
+    ${file}=    Create List
+    ...    ${CURDIR}${/}output${/}receipts${/}${order}${/}order_receipt.pdf    
+    ...    ${CURDIR}${/}output${/}previews${/}${order}${/}Robot_Preview.png
+    Add Files To pdf    ${file}        ${CURDIR}${/}output${/}receipts${/}${order}${/}order_receipt.pdf
+    Close Pdf    ${CURDIR}${/}output${/}receipts${/}${order}${/}order_receipt.pdf
 
 *** Keywords ***
 Order another robot
@@ -73,14 +82,13 @@ Order another robot
 *** Keywords ***
 Get Data from CSV and create orders
     ${data}=    Read table from CSV    ${CURDIR}${/}orders.csv  header=True
-    Log    ${data}
     FOR    ${order}    IN    @{data}
         Close Consitutional Rights Pop Up 
         Create Order    ${order}
         Submit order
-        Receipt    ${order}
-        Screenshot Robot preview    ${order}
-        Embed Robot preview to PDF    
+        Receipt    ${order}[Order number]
+        Screenshot Robot preview    ${order}[Order number]
+        Embed Robot preview to PDF    ${order}[Order number]
         Order another robot
     END
 
@@ -90,8 +98,9 @@ Create ZIP File
 
 *** Tasks ***
 Main
+    #Open vault
     Open browser
-    Download orders file
+    Download orders file    
     Get Data from CSV and create orders
     Create ZIP File
     [Teardown]  Close Browser

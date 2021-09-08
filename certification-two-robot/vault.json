@@ -1,6 +1,5 @@
 {
-    "credentials": {
-      "username": "some-username",
-      "password": "some-password"
-    }
+  "csv-file-download": {
+    "url": "https://robotsparebinindustries.com/orders.csv"
   }
+}
